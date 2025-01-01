@@ -1,17 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
+import "./assets/index.css";
 import App from "./App";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import reportWebVitals from "./reportWebVitals";
-import Home from "./Home";
+import reportWebVitals from "./scripts/reportWebVitals";
+import Home from "./components/HomeDogList";
+import { DogForm } from "./components/dogs/DogForm";
+import { DogDetails } from "./components/dogs/DogDetails";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
+
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
+        <Route path ="/walkers" element={<walkers />} />
+        <Route path="/cities" element={<cities />} />
+        <Route path="/dogform" element={<DogForm />} />
+        <Route path="/dogs/:id" element={<DogDetails />} />
       </Route>
     </Routes>
   </BrowserRouter>,
