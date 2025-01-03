@@ -23,12 +23,17 @@ List<Dog> dogs = new List<Dog>
 List<Walker> walkers = new List<Walker>
 {
     new Walker { Id = 1, Name = "M'Lee" },
+    new Walker { Id = 2, Name = "Eric" },
+    new Walker { Id = 3, Name = "Riley" },
+    new Walker { Id = 4, Name = "Bee" },
 };
 
 List<City> cities = new List<City>
 {
     new City { Id = 1, Name = "Nashville" },
-    new City { Id = 2, Name = "Franklin" },
+    new City { Id = 2, Name = "Portland" },
+    new City { Id = 3, Name = "New York" },
+    new City { Id = 4, Name = "Chicago" },
 };
 
 // Add services to the container.
@@ -55,6 +60,7 @@ app.MapGet(
     }
 );
 
+// dog endpoints
 app.MapGet(
     "/api/dogs",
     () =>
@@ -93,23 +99,6 @@ app.MapGet(
         );
     }
 );
-app.MapGet(
-    "/api/cities",
-    () =>
-    {
-        var cityList = cities.Select(c => new CityListDTO { Id = c.Id, Name = c.Name });
-        return cityList;
-    }
-);
-
-app.MapGet(
-    "/api/walkers",
-    () =>
-    {
-        var walkerList = walkers.Select(w => new WalkerListDTO { Id = w.Id, Name = w.Name });
-        return walkerList;
-    }
-);
 app.MapDelete(
     "/api/dogs/{id}",
     (int id) =>
@@ -129,5 +118,27 @@ app.MapPost(
         return Results.Created($"/api/dogs/{newDog.Id}", newDog);
     }
 );
+
+//city endpoints
+app.MapGet(
+    "/api/cities",
+    () =>
+    {
+        var cityList = cities.Select(c => new CityListDTO { Id = c.Id, Name = c.Name });
+        return cityList;
+    }
+);
+
+
+//walker endpoints
+app.MapGet(
+    "/api/walkers",
+    () =>
+    {
+        var walkerList = walkers.Select(w => new WalkerListDTO { Id = w.Id, Name = w.Name });
+        return walkerList;
+    }
+);
+
 
 app.Run();

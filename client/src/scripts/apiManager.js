@@ -3,6 +3,7 @@ export const getGreeting = async () => {
   return res.json();
 };
 
+// dog services
 export const getDogList = async () => {
   const res = await fetch("/api/dogs");
   return res.json();
@@ -19,17 +20,6 @@ export const deleteDog = async (id) => {
     method: "DELETE"
   })
 }
-
-export const getCityList = async () => {
-  const res = await fetch("/api/cities");
-  return res.json();
-}
-
-export const getWalkerList = async () => {
-  const res = await fetch("/api/walkers");
-  return res.json();
-}
-
 export const addDog = async (dogFormData) => {
   const response = await fetch("/api/dogs", {
     method: "POST",
@@ -40,3 +30,29 @@ export const addDog = async (dogFormData) => {
   });
   return await response.json();
 }
+
+
+// city services
+export const getCityList = async () => {
+  const res = await fetch("/api/cities");
+  return res.json();
+}
+export const deleteCity = async (id) => {
+  const res = await fetch(`/api/cities/${id}`, {
+    method: "DELETE"
+  })
+}
+
+
+//walker services
+export const getWalkerList = async () => {
+  const res = await fetch("/api/walkers");
+  return res.json();
+}
+
+export const deleteWalker = async (id) => {
+  const res = await fetch(`/api/walkers/${id}`, {
+    method: "DELETE"
+  })
+}
+

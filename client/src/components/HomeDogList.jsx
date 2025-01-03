@@ -36,7 +36,7 @@ export default function Home() {
     <>
       <h2>{greeting.message}</h2>
       {dogList.map(d => (
-        <Card key={d.Id}>
+        <Card key={d.id}>
           <Card.Body>
             <Link to={`/dogs/${d.id}`}>
               {d.name}
